@@ -1,0 +1,8 @@
+#!/bin/sh
+
+BUILD_DIR=build
+CWD=$(pwd)
+TEMPLATECONF=$CWD/sources/zeroPlayerBuild/templates
+OEROOT=$CWD/sources/poky
+
+. $OEROOT/oe-init-build-env $CWD/$BUILD_DIR
