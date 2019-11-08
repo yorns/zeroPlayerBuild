@@ -16,7 +16,7 @@ IMAGE_INSTALL_append = " \
   bash \
   boost \
   taglib \
-  mplayer \
+  mplayer-common \
   "
 
 LICENSE="GPLv3"

@@ -18,6 +18,5 @@ BBLAYERS = " \
   \
   ${BSPDIR}/sources/meta-raspberrypi \
   \
-  ${BSPDIR}/sources/zeroPlayerBuild/meta-app \
   ${BSPDIR}/sources/zeroPlayerBuild/meta-zero-distro \
 "
