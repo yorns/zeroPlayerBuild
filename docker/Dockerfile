@@ -22,10 +22,10 @@ ARG host_uid=1001
 ARG host_gid=1001
 RUN groupadd -g $host_gid $USER_NAME && useradd -g $host_gid -m -s /bin/bash -u $host_uid $USER_NAME
 
-USER $USER_NAME
+#USER $USER_NAME
 
 WORKDIR /home/$USER_NAME 
 
-# COPY docker-entrypoint.sh /
-# ENTRYPOINT ["/docker-entrypoint.sh"]
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
 

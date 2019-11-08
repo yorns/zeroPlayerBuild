@@ -16,7 +16,7 @@ IMAGE_INSTALL_append = " \
   bash \
   boost \
   taglib \
-  omxplayer \
+  mplayer \
   "
 
 LICENSE="GPLv3"
