@@ -14,6 +14,7 @@ IMAGE_INSTALL_append = " \
   wpa-supplicant \
   linux-firmware-bcm43430 \
   bash \
+  openssl \
   boost \
   taglib \
   mplayer-common \
