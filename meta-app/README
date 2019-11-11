@@ -1,0 +1,21 @@
+This README file contains information on the contents of the meta-app layer.
+
+This is an application software layer.
+Please see the corresponding sections below for details.
+
+Dependencies
+============
+
+  URI: URI: git://git.yoctoproject.org/poky
+  branch: rocko
+
+Table of Contents
+=================
+
+  I. Adding the meta-app layer to your build
+
+
+I. Adding the meta-app layer to your build
+=================================================
+
+Run 'bitbake-layers add-layer /path/to/meta-app'
