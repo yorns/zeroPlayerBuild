@@ -1,6 +1,6 @@
 DESCRIPTION = "zero player audio server"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=254d223b9e70204fcb33cd46be4df2d7"
+#LIC_FILES_CHKSUM = "file://LICENSE;md5=254d223b9e70204fcb33cd46be4df2d7"
 
 SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https"
 
