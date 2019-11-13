@@ -28,3 +28,13 @@ do_install_append() {
   install -m 0644 ${S}/systemd/audioServer.service ${D}${systemd_unitdir}/system
   install -m 0644 ${S}/html/index.html ${D}${datadir}/audioserver/html
 }
+
+FILES_${PN} = "\
+${datadir}/audioserver \
+${datadir}/audioserver/mp3 \
+${datadir}/audioserver/tmp \
+${datadir}/audioserver/html \
+${datadir}/audioserver/html/img \
+${datadir}/audioserver/html/index.html \
+${datadir}/audioserver/playlist"
+
