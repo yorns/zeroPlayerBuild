@@ -31,10 +31,23 @@ run_docker_container() {
     /bin/bash
 }
 
+start_docker_container() {
+  if [[ "$build_volume" = "/*" ]] && [ ! -d $build_volume ]; then
+    echo "ERROR: Path $build_volume not found or not readable"
+    exit 1
+  fi
+
+  docker start -a -i \
+    yocto-build  
+}
+
+
 if [ "$1" = "build" ]; then
   build_docker_image
 elif [ "$1" = "run" ]; then
   run_docker_container
+elif [ "$1" = "start" ]; then
+  start_docker_container
 else
   echo "Usage: $0 (build|run)"
   exit 1
