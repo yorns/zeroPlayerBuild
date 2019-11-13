@@ -37,6 +37,5 @@ ${datadir}/audioserver/html \
 ${datadir}/audioserver/html/img \
 ${datadir}/audioserver/html/index.html \
 ${datadir}/audioserver/playlist \
-§{bindir}/audioServer
-"
+§{bindir}/audioServer"
 
