@@ -37,5 +37,6 @@ ${datadir}/audioserver/html \
 ${datadir}/audioserver/html/img \
 ${datadir}/audioserver/html/index.html \
 ${datadir}/audioserver/playlist \
+${datadir}/audioserver/player_log \
 ${bindir}/audioServer"
 
