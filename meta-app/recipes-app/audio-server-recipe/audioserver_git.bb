@@ -24,6 +24,7 @@ do_install_append() {
   install -d ${D}${datadir}/audioserver/html
   install -d ${D}${datadir}/audioserver/html/img
   install -d ${D}${datadir}/audioserver/playlist
+  install -d ${D}${datadir}/audioserver/player_log
   install -d ${D}${systemd_unitdir}/system
   install -m 0644 ${S}/systemd/audioServer.service ${D}${systemd_unitdir}/system
   install -m 0644 ${S}/html/index.html ${D}${datadir}/audioserver/html
