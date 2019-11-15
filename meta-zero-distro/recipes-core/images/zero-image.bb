@@ -14,7 +14,7 @@ IMAGE_INSTALL_append = " \
   hostapd \
   linux-firmware-bcm43430 \
   bash \
-  audioServer \
+  audioserver \
   "
 
 LICENSE="GPLv3"
