@@ -11,7 +11,7 @@ IMAGE_FEATURES += "ssh-server-dropbear"
 
 # Additional packages
 IMAGE_INSTALL_append = " \
-  wpa-supplicant \
+  hostapd \
   linux-firmware-bcm43430 \
   bash \
   audioServer \
