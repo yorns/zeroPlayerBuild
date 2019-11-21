@@ -24,13 +24,13 @@ do_install_append() {
 }
 
 FILES_${PN} = "\
-${datadir}/audioserver \
-${datadir}/audioserver/mp3 \
-${datadir}/audioserver/tmp \
-${datadir}/audioserver/html \
-${datadir}/audioserver/html/img \
-${datadir}/audioserver/html/index.html \
-${datadir}/audioserver/playlist \
-${datadir}/audioserver/player_log \
+${localstatedir}/audioserver \
+${localstatedir}/audioserver/mp3 \
+${localstatedir}/audioserver/tmp \
+${localstatedir}/audioserver/html \
+${localstatedir}/audioserver/html/img \
+${localstatedir}/audioserver/html/index.html \
+${localstatedir}/audioserver/playlist \
+${localstatedir}/audioserver/player_log \
 ${bindir}/audioServer"
 
