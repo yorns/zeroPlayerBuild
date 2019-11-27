@@ -30,6 +30,12 @@ ${localstatedir}/audioserver/tmp \
 ${localstatedir}/audioserver/html \
 ${localstatedir}/audioserver/html/img \
 ${localstatedir}/audioserver/html/index.html \
+${localstatedir}/audioserver/html/js \
+${localstatedir}/audioserver/html/css \
+${localstatedir}/audioserver/html/js/bootstrap.min.js \
+${localstatedir}/audioserver/html/js/popper.min.js \
+${localstatedir}/audioserver/html/js/jquery-3.4.1.min.js \
+${localstatedir}/audioserver/html/css/bootstrap.min.css \
 ${localstatedir}/audioserver/playlist \
 ${localstatedir}/audioserver/player_log \
 ${bindir}/audioServer"
