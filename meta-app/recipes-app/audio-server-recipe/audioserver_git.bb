@@ -16,7 +16,7 @@ RDEPENDS_${PN} = "hostapd mpv omxplayer"
 inherit cmake
 inherit systemd
 
-SYSTEMD_SERVICE_${PN} = "audioServer.service"
+SYSTEMD_SERVICE_${PN} = "audioServer.service mpv.service"
 
 do_install_append() {
   install -d ${D}${systemd_unitdir}/system
