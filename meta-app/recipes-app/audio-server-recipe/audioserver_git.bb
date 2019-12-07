@@ -11,7 +11,7 @@ SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
 DEPENDS = "boost openssl taglib nlohmann-json"
-RDEPENDS_${PN} = "hostapd mpv"
+RDEPENDS_${PN} = "hostapd mpv omxplayer"
 
 inherit cmake
 inherit systemd
@@ -21,6 +21,7 @@ SYSTEMD_SERVICE_${PN} = "audioServer.service"
 do_install_append() {
   install -d ${D}${systemd_unitdir}/system
   install -m 0644 ${S}/systemd/audioServer.service ${D}${systemd_unitdir}/system
+  install -m 0644 ${S}/systemd/mpv.service ${D}${systemd_unitdir}/system
 }
 
 FILES_${PN} = "\
