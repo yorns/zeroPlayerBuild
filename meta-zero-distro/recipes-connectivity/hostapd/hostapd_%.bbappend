@@ -19,4 +19,5 @@ do_install_append() {
 CONFFILES_${PN} += "${sysconfdir}/*.conf"
 
 SYSTEMD_AUTO_ENABLE = "enable"
-#SYSTEMD_SERVICE_${PN}_append = " wpa_supplicant-wlan0.conf"
+SYSTEMD_SERVICE_${PN}_append = " hostapd.service"
+
