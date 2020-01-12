@@ -2,11 +2,11 @@ DESCRIPTION = "zero player audio server"
 LICENSE = "CLOSED"
 # LIC_FILES_CHKSUM = "file://LICENSE;md5=254d223b9e70204fcb33cd46be4df2d7"
 
-SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https"
+SRCBRANCH = "without_ssl"
+SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https;branch=${SRCBRANCH}"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCBRANCH = "without_ssl"
 SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
