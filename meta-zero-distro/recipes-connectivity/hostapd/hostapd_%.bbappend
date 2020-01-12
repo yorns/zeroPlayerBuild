@@ -11,7 +11,7 @@ do_install_append() {
 	# link instance-specific units---this is equivalent to calling
         #   $ systemctl enable wpa_supplicant@wlan0
         # on the target system.
-#	install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants
+	install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants
         ln -s ${systemd_unitdir}/hostapd.service ${D}${sysconfdir}/systemd/system/multi-user.target.wants/hostapd.service
 }
 
