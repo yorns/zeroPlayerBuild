@@ -2,7 +2,7 @@
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-SRC_URI += "file://hostapd.conf"
+SRC_URI += "file://hostapd.conf file://hostapd.service"
 
 do_install_append() {
 #	install -d ${D}${sysconfdir}/wpa_supplicant

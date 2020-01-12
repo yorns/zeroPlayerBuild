@@ -6,12 +6,13 @@ SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
+SRCBRANCH = "without_ssl"
 SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 
 DEPENDS = "boost openssl taglib nlohmann-json"
-RDEPENDS_${PN} = "hostapd mpv omxplayer"
+RDEPENDS_${PN} = "hostapd mpv"
 
 inherit cmake
 inherit systemd
