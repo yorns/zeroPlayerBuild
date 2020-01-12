@@ -14,7 +14,7 @@ do_install_append() {
         #   $ systemctl enable wpa_supplicant@wlan0
         # on the target system.
 	install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants
-        ln -s ${D}${base_libdir}/systemd/system/hostapd.service ${D}${sysconfdir}/systemd/system/multi-user.target.wants/hostapd.service
+        ln -s ${base_libdir}/systemd/system/hostapd.service ${D}${sysconfdir}/systemd/system/multi-user.target.wants/hostapd.service
 }
 
 # Configure location of config file in package
