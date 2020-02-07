@@ -8,11 +8,11 @@
   <remote fetch="https://github.com/agherzan" name="raspberrypi"/>
   <remote fetch="https://github.com/yorns" name="yorns"/>
 
-  <project remote="yocto" name="poky.git" revision="warrior" path="sources/poky"/>
+  <project remote="yocto" name="poky.git" revision="zeus" path="sources/poky"/>
   
-  <project remote="oe" name="meta-openembedded.git" revision="warrior" path="sources/meta-openembedded"/>
+  <project remote="oe" name="meta-openembedded.git" revision="zeus" path="sources/meta-openembedded"/>
   
-  <project remote="raspberrypi" name="meta-raspberrypi.git" revision="warrior" path="sources/meta-raspberrypi"/>
+  <project remote="raspberrypi" name="meta-raspberrypi.git" revision="zeus" path="sources/meta-raspberrypi"/>
   
   <project remote="yorns" revision="with_hostapd" name="zeroPlayerBuild.git" path="sources/zeroPlayerBuild">
     <copyfile src="scripts/setup-environment" dest="setup-environment"/>
