@@ -4,7 +4,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 inherit systemd
 
-SRC_URI += "file://hostapd.conf file://hostapd.service"
+SRC_URI += "file://hostapd.conf file://hostapd.service file://udhcpd.conf"
 
 do_install_append() {
 	install -d ${D}${sysconfdir}
