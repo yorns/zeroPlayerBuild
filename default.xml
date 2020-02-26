@@ -14,8 +14,6 @@
   
   <project remote="raspberrypi" name="meta-raspberrypi.git" revision="zeus" path="sources/meta-raspberrypi"/>
   
-  <project remote="yorns" revision="with_hostapd" name="zeroPlayerBuild.git" path="sources/zeroPlayerBuild">
-    <copyfile src="scripts/setup-environment" dest="setup-environment"/>
-  </project>
+  <project remote="yorns" revision="zeus" name="zeroPlayerBuild.git" path="sources/zeroPlayerBuild"/>
 
 </manifest>

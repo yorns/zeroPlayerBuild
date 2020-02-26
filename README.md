@@ -11,18 +11,22 @@ The buildsystem uses the Google repo tool (https://android.googlesource.com/tool
 Build the Docker image:
 ```
 cd docker
-export WORKDIR=$USER/tmp/workdir/
+export WORKDIR=$HOME/tmp/workdir/
 mkdir -p $WORKDIR
+docker build . -t crops/poky
 docker run --rm -it -v $WORKDIR:/workdir crops/poky --workdir=/workdir
 ```
 
 Start a yocto build (inside the running Docker container or on a host which has all required build host packages installed:
 https://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html#packages):
 ```
-repo init -u https://github.com/yorns/zeroPlayerBuild.giti -b zeus
+repo init -u https://github.com/yorns/zeroPlayerBuild.git -b zeus
 repo sync
 . setup-environment
 bitbake zero-image
 ```
 
-The final images are stored in  _$WORKDIR/tmp/deploy/images/raspberry0-wifi*_.
+The final images are stored on the host (please set WORKDIR in that environment if necessary)
+in $WORKDIR/build/tmp/deploy/images/raspberrypi0-wifi/zero-image-raspberrypi0-wifi.rpi-sdimg
+
+
