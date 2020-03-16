@@ -1,5 +1,12 @@
 # Readme
 
+
+# master branch is actually based on warrior, but audioplayer needs boost >= 1.70, so please use the following branch:
+
+https://github.com/yorns/zeroPlayerBuild/tree/zeus
+
+---------
+
 This yocto-based buildsystem uses a Docker container for the build of a Raspberry Pi image.
 The Dockerfile is located in folder `docker` and based on `crops/poky:ubuntu-16.04` (https://hub.docker.com/r/crops/poky/).
 The Docker image contains all tools to build with the OpenEmbedded/Yocto buildsystem. The workspace is created in a mounted folder of the host.
