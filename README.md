@@ -20,8 +20,11 @@ docker run --rm -it -v $WORKDIR:/workdir crops/poky --workdir=/workdir
 Start a yocto build (inside the running Docker container or on a host which has all required build host packages installed:
 https://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html#packages):
 ```
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
 repo init -u https://github.com/yorns/zeroPlayerBuild.git -b zeus
 repo sync
+cp ./sources/zeroPlayerBuild/scripts/setup-environment .
 . setup-environment
 bitbake zero-image
 ```
