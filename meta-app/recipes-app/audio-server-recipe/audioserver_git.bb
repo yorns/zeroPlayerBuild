@@ -32,12 +32,19 @@ ${localstatedir}/audioserver/tmp \
 ${localstatedir}/audioserver/html \
 ${localstatedir}/audioserver/html/img \
 ${localstatedir}/audioserver/html/index.html \
-${localstatedir}/audioserver/html/js \
+${localstatedir}/audioserver/html/font \
+${localstatedir}/audioserver/html/font/fontello.eot \
+${localstatedir}/audioserver/html/font/fontfontello.svg \
+${localstatedir}/audioserver/html/font/fontfontello.ttf \
+${localstatedir}/audioserver/html/font/fontfontello.woff \ 
+${localstatedir}/audioserver/html/font/fontfontello.woff2 \
 ${localstatedir}/audioserver/html/css \
+${localstatedir}/audioserver/html/css/bootstrap.min.css \
+${localstatedir}/audioserver/html/js \
 ${localstatedir}/audioserver/html/js/bootstrap.min.js \
 ${localstatedir}/audioserver/html/js/popper.min.js \
 ${localstatedir}/audioserver/html/js/jquery-3.4.1.min.js \
-${localstatedir}/audioserver/html/css/bootstrap.min.css \
+${localstatedir}/audioserver/html/js/audioserver.js \
 ${localstatedir}/audioserver/playlist \
 ${localstatedir}/audioserver/player_log \
 ${bindir}/audioServer"
