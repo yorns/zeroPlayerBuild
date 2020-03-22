@@ -40,6 +40,7 @@ ${localstatedir}/audioserver/html/font/fontfontello.woff \
 ${localstatedir}/audioserver/html/font/fontfontello.woff2 \
 ${localstatedir}/audioserver/html/css \
 ${localstatedir}/audioserver/html/css/bootstrap.min.css \
+${localstatedir}/audioserver/html/css/fontello.css \
 ${localstatedir}/audioserver/html/js \
 ${localstatedir}/audioserver/html/js/bootstrap.min.js \
 ${localstatedir}/audioserver/html/js/popper.min.js \
