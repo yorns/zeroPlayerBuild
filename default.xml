@@ -14,6 +14,6 @@
   
   <project remote="raspberrypi" name="meta-raspberrypi.git" revision="zeus" path="sources/meta-raspberrypi"/>
   
-  <project remote="yorns" revision="zeus" name="zeroPlayerBuild.git" path="sources/zeroPlayerBuild"/>
+  <project remote="yorns" revision="wifi_client" name="zeroPlayerBuild.git" path="sources/zeroPlayerBuild"/>
 
 </manifest>
