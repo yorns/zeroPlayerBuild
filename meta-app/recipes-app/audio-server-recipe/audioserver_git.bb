@@ -12,7 +12,7 @@ SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
 DEPENDS = "boost openssl taglib nlohmann-json"
-RDEPENDS_${PN} = "hostapd mpv"
+RDEPENDS_${PN} = "wpa-supplicant mpv"
 
 inherit cmake
 inherit systemd
