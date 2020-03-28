@@ -2,7 +2,7 @@ DESCRIPTION = "zero player audio server"
 LICENSE = "CLOSED"
 # LIC_FILES_CHKSUM = "file://LICENSE;md5=254d223b9e70204fcb33cd46be4df2d7"
 
-SRCBRANCH = "master"
+SRCBRANCH = "wifi_client"
 SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https;branch=${SRCBRANCH}"
 
 # Modify these as desired

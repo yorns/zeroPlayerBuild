@@ -18,6 +18,7 @@ IMAGE_INSTALL_append = " \
   linux-firmware-bcm43430 \
   bash \
   audioserver \
+  openssl \
   "
 
 LICENSE="GPLv3"
