@@ -9,6 +9,8 @@ SRC_URI += "file://wpa_supplicant.conf file://wpa_supplicant.service"
 do_install_append() {
 	install -d ${D}${sysconfdir}
 	install -m 0644 ${WORKDIR}/wpa_supplicant.conf ${D}${sysconfdir}/wpa_supplicant.conf
+	install -d ${D}/${systemd_unitdir}/system
+	install -m 644 ${S}/wpa_supplicant/systemd/*.service ${D}/${systemd_unitdir}/system
 }
 
 
