@@ -12,7 +12,7 @@ SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
 DEPENDS = "boost openssl taglib nlohmann-json gstreamer1.0"
-RDEPENDS_${PN} = "wpa-supplicant mpv gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-meta-base"
+RDEPENDS_${PN} = "wpa-supplicant mpv gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-meta-base gstreamer1.0-plugins-good"
 
 inherit cmake
 inherit systemd
