@@ -30,6 +30,7 @@ ${localstatedir}/audioserver \
 ${localstatedir}/audioserver/mp3 \
 ${localstatedir}/audioserver/tmp \
 ${localstatedir}/audioserver/html \
+${localstatedir}/audioserver/stream \
 ${localstatedir}/audioserver/html/img \
 ${localstatedir}/audioserver/html/index.html \
 ${localstatedir}/audioserver/html/font \
