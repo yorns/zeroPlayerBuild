@@ -9,7 +9,6 @@ DESCRIPTION = "Custom image based on core-basic-image"
 
 # We only need a rpi-sdimg image here
 IMAGE_FSTYPES_raspberrypi0-wifi ?= "tar.bz2 rpi-sdimg"
-hostname_pn-base-files = "zeroplayer"
 
 IMAGE_FEATURES += "ssh-server-dropbear"
 
