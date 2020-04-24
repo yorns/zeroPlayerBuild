@@ -9,12 +9,14 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI += " \
     file://wired.network \
     file://wireless.network \
+    file://reloved.conf \
     "
 
 do_install_append() {
 	install -d ${D}${sysconfdir}/systemd/network/
 	install -m 0644 ${WORKDIR}/*.network ${D}${sysconfdir}/systemd/network/
-#	ln -s /run/systemd/resolve/resolv.conf ${D}${sysconfdir}/resolv.conf
+        install -m 0644 ${WORKDIR}/resolved.conf ${D}${sysconfdir}/systemd/resolved.conf
+        install -d ${D}/${systemd_unitdir}/system
 }
 
 #USERADD_PARAM_${PN} += "--system --home /dev/null systemd-journal-gateway"
