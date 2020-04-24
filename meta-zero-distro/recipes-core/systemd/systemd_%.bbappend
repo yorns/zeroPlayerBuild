@@ -9,7 +9,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI += " \
     file://wired.network \
     file://wireless.network \
-    file://reloved.conf \
+    file://resolved.conf \
     "
 
 do_install_append() {
