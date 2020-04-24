@@ -2,8 +2,6 @@
 Name=wlan0
 
 [Network]
-Address=192.168.0.1/24
-DHCPServer=yes
+DHCP=ipv4
+MulticastDNS=yes
 
-#[DHCP]
-#RouteMetric=20
