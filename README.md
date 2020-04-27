@@ -1,3 +1,7 @@
+# Zeroplayer
+
+Zeroplayer is a project, to run the web based audioplayer on an raspberry pi zero.
+
 # Readme
 
 
