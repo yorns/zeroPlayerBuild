@@ -1,19 +1,10 @@
 # Zeroplayer
 
-Zeroplayer is a project, to run the web based audioplayer on an raspberry pi zero.
+This yocto-based buildsystem uses a Docker container for the build of a Raspberry Pi zero-w image.
+The Dockerfile is located in folder `docker` and based on `crop porky ubuntu-18.04` (https://github.com/crops/poky-container).
+The Docker image contains all tools to build with the OpenEmbedded/Yocto buildsystem. The workspace is created in a volume 
+directory given by the the host.
 
-# Readme
-
-
-# master branch is actually based on warrior, but audioplayer needs boost >= 1.70, so please use the following branch:
-
-https://github.com/yorns/zeroPlayerBuild/tree/zeus
-
----------
-
-This yocto-based buildsystem uses a Docker container for the build of a Raspberry Pi image.
-The Dockerfile is located in folder `docker` and based on `crops/poky:ubuntu-16.04` (https://hub.docker.com/r/crops/poky/).
-The Docker image contains all tools to build with the OpenEmbedded/Yocto buildsystem. The workspace is created in a mounted folder of the host.
 The buildsystem uses the Google repo tool (https://android.googlesource.com/tools/repo) to setup the Yocto layer structure (i.e. checkout all repos).
 
 # Usage
@@ -21,20 +12,38 @@ The buildsystem uses the Google repo tool (https://android.googlesource.com/tool
 Build the Docker image:
 ```
 cd docker
-./manage-build-container.sh build
-# Create a volume
-docker volume create buildvol
-# Run the Docker container
-./manage-build-container.sh run
+export WORKDIR=$HOME/tmp/workdir/
+mkdir -p $WORKDIR
+docker build . -t crops/poky
+docker run --rm -it -v $WORKDIR:/workdir crops/poky --workdir=/workdir
 ```
 
 Start a yocto build (inside the running Docker container or on a host which has all required build host packages installed:
 https://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html#packages):
+
 ```
-repo init -u https://github.com/yorns/zeroPlayerBuild.git
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+repo init -u https://github.com/yorns/zeroPlayerBuild.git 
 repo sync
 . setup-environment
-bitbake rpi-image
+bitbake zero-image
 ```
 
-The final images are stored in  _<build-dir>/tmp/deploy/images/raspberry0-wifi_.
+The final images are stored on the host (please set WORKDIR in that environment if necessary)
+in $WORKDIR/build/tmp/deploy/images/raspberrypi0-wifi/zero-image-raspberrypi0-wifi.rpi-sdimg
+
+# Changing between wifi client and server mode
+
+## Wifi Client Mode
+On the main branch, the system is set up in wifi client mode. Advantage is, that the small device links into your local wifi.
+Disadvantage is, that you need to set up your wifi credentials on your image.
+
+To do so, replugin your sd card to let the system load the sd file system. On this file system, open the file /etc/wpa\_supplicant.conf and set your personal wifi credentials (Wifi Network Name and Password).
+
+internally the branch for this is **wifi_client**. This branch is taken automatically, if you setup the system on docker.
+
+## Wifi Accesspoint Mode
+Your can also setup your raspberry pi to open your own Accesspoint (without a password). In this case, there is another branch **with_hostapd** you can use.
+ 
+

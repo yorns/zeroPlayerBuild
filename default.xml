@@ -3,19 +3,19 @@
 
   <default sync-j="2"/>
 
-  <remote fetch="git://git.yoctoproject.org" name="yocto"/>
+  <remote fetch="git://git.yoctoproject.org" name="yocto-zeus-22.0.2"/>
   <remote fetch="https://github.com/openembedded" name="oe"/>
   <remote fetch="https://github.com/agherzan" name="raspberrypi"/>
   <remote fetch="https://github.com/yorns" name="yorns"/>
 
-  <project remote="yocto" name="poky.git" revision="warrior" path="sources/poky"/>
+  <project remote="yocto-zeus-22.0.2" name="poky.git" revision="5e1f52edb7a9f790fb6cb5d96502f3690267c1b1" path="sources/poky"/>
   
-  <project remote="oe" name="meta-openembedded.git" revision="warrior" path="sources/meta-openembedded"/>
+  <project remote="oe" name="meta-openembedded.git" revision="zeus" path="sources/meta-openembedded"/>
   
-  <project remote="raspberrypi" name="meta-raspberrypi.git" revision="warrior" path="sources/meta-raspberrypi"/>
+  <project remote="raspberrypi" name="meta-raspberrypi.git" revision="zeus" path="sources/meta-raspberrypi"/>
   
-  <project remote="yorns" revision="master" name="zeroPlayerBuild.git" path="sources/zeroPlayerBuild">
-    <copyfile src="scripts/setup-environment" dest="setup-environment"/>
+  <project remote="yorns" revision="zeus" name="zeroPlayerBuild.git" path="sources/zeroPlayerBuild">
+	  <copyfile src="scripts/setup-environment" dest="setup-environment"/>
   </project>
 
 </manifest>

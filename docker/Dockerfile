@@ -1,31 +1,53 @@
-FROM ubuntu:18.04
+# Copyright (C) 2015-2016 Intel Corporation
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2 as
+# published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-RUN apt-get update && apt-get -y install gawk wget git-core diffstat unzip texinfo gcc-multilib \
-     build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
-     xz-utils debianutils iputils-ping libsdl1.2-dev xterm tar locales curl vim && \
-     apt-get clean && \
-     rm -rf /var/lib/apt/lists/*
+FROM crops/yocto:ubuntu-18.04-base
 
-RUN rm /bin/sh && ln -s bash /bin/sh
+USER root
 
-RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/bin/repo && \
+ADD https://raw.githubusercontent.com/crops/extsdk-container/master/restrict_useradd.sh  \
+        https://raw.githubusercontent.com/crops/extsdk-container/master/restrict_groupadd.sh \
+        https://raw.githubusercontent.com/crops/extsdk-container/master/usersetup.py \
+        /usr/bin/
+COPY distro-entry.sh poky-entry.py poky-launch.sh /usr/bin/
+COPY sudoers.usersetup /etc/
+
+# For ubuntu, do not use dash.
+RUN which dash &> /dev/null && (\
+    echo "dash dash/sh boolean false" | debconf-set-selections && \
+    DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash) || \
+    echo "Skipping dash reconfigure (not applicable)"
+
+RUN wget https://storage.googleapis.com/git-repo-downloads/repo -O /usr/bin/repo && \
     chmod a+x /usr/bin/repo
 
-RUN locale-gen en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
+# We remove the user because we add a new one of our own.
+# The usersetup user is solely for adding a new user that has the same uid,
+# as the workspace. 70 is an arbitrary *low* unused uid on debian.
+RUN userdel -r yoctouser && \
+    groupadd -g 70 usersetup && \
+    useradd -N -m -u 70 -g 70 usersetup && \
+    chmod 755 /usr/bin/usersetup.py \
+        /usr/bin/poky-entry.py \
+        /usr/bin/poky-launch.sh \
+        /usr/bin/restrict_groupadd.sh \
+        /usr/bin/restrict_useradd.sh && \
+    echo "#include /etc/sudoers.usersetup" >> /etc/sudoers
 
-ENV USER_NAME yocto
-ENV PROJECT yocto 
+USER usersetup
+ENV LANG=en_US.UTF-8
 
-ARG host_uid=1001
-ARG host_gid=1001
-RUN groupadd -g $host_gid $USER_NAME && useradd -g $host_gid -m -s /bin/bash -u $host_uid $USER_NAME
-
-#USER $USER_NAME
-
-WORKDIR /home/$USER_NAME 
-
-COPY docker-entrypoint.sh /
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/distro-entry.sh", "/usr/bin/dumb-init", "--", "/usr/bin/poky-entry.py"]
 
