@@ -21,16 +21,18 @@ SYSTEMD_SERVICE_${PN} = "audioServer.service mpv.service"
 
 do_install_append() {
   install -d ${D}${systemd_unitdir}/system
+  install -d ${D}${sysconfdir}
   install -m 0644 ${S}/systemd/audioServer.service ${D}${systemd_unitdir}/system
   install -m 0644 ${S}/systemd/mpv.service ${D}${systemd_unitdir}/system
+  install -m 0644 ${S}/etc/audioserver.json ${D}${sysconfdir}
 }
 
 FILES_${PN} = "\
 ${localstatedir}/audioserver \
-${localstatedir}/audioserver/mp3 \
-${localstatedir}/audioserver/tmp \
+${localstatedir}/audioserver/audioMp3 \
+${localstatedir}/audioserver/audioJson \
 ${localstatedir}/audioserver/html \
-${localstatedir}/audioserver/stream \
+${localstatedir}/audioserver/cache \
 ${localstatedir}/audioserver/html/img \
 ${localstatedir}/audioserver/html/index.html \
 ${localstatedir}/audioserver/html/font \
@@ -47,7 +49,7 @@ ${localstatedir}/audioserver/html/js/bootstrap.min.js \
 ${localstatedir}/audioserver/html/js/popper.min.js \
 ${localstatedir}/audioserver/html/js/jquery-3.4.1.min.js \
 ${localstatedir}/audioserver/html/js/audioserver.js \
-${localstatedir}/audioserver/playlist \
-${localstatedir}/audioserver/player_log \
+${localstatedir}/audioserver/playlistM3u \
+${localstatedir}/audioserver/playlistJson \
 ${bindir}/audioServer"
 
