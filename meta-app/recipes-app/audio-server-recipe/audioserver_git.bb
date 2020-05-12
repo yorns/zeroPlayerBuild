@@ -51,5 +51,6 @@ ${localstatedir}/audioserver/html/js/jquery-3.4.1.min.js \
 ${localstatedir}/audioserver/html/js/audioserver.js \
 ${localstatedir}/audioserver/playlistM3u \
 ${localstatedir}/audioserver/playlistJson \
+${sysconfdir}/audioserver.json \
 ${bindir}/audioServer"
 
