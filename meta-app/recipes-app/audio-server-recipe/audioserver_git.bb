@@ -11,8 +11,8 @@ SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "boost openssl taglib nlohmann-json"
-RDEPENDS_${PN} = "hostapd mpv"
+DEPENDS = "boost openssl taglib nlohmann-json gstreamer1.0 ca-certificates"
+RDEPENDS_${PN} = "hostapd mpv gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-meta-base gstreamer1.0-plugins-good ca-certificates"
 
 inherit cmake
 inherit systemd
@@ -27,18 +27,27 @@ do_install_append() {
 
 FILES_${PN} = "\
 ${localstatedir}/audioserver \
-${localstatedir}/audioserver/mp3 \
-${localstatedir}/audioserver/tmp \
+${localstatedir}/audioserver/audioMp3 \
+${localstatedir}/audioserver/audioJson \
+${localstatedir}/audioserver/cache \
 ${localstatedir}/audioserver/html \
 ${localstatedir}/audioserver/html/img \
 ${localstatedir}/audioserver/html/index.html \
-${localstatedir}/audioserver/html/js \
+${localstatedir}/audioserver/html/font \
+${localstatedir}/audioserver/html/font/fontello.eot \
+${localstatedir}/audioserver/html/font/fontfontello.svg \
+${localstatedir}/audioserver/html/font/fontfontello.ttf \
+${localstatedir}/audioserver/html/font/fontfontello.woff \ 
+${localstatedir}/audioserver/html/font/fontfontello.woff2 \
 ${localstatedir}/audioserver/html/css \
+${localstatedir}/audioserver/html/css/bootstrap.min.css \
+${localstatedir}/audioserver/html/css/fontello.css \
+${localstatedir}/audioserver/html/js \
 ${localstatedir}/audioserver/html/js/bootstrap.min.js \
 ${localstatedir}/audioserver/html/js/popper.min.js \
 ${localstatedir}/audioserver/html/js/jquery-3.4.1.min.js \
-${localstatedir}/audioserver/html/css/bootstrap.min.css \
+${localstatedir}/audioserver/html/js/audioserver.js \
 ${localstatedir}/audioserver/playlist \
-${localstatedir}/audioserver/player_log \
 ${bindir}/audioServer"
+
 
