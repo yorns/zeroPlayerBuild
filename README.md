@@ -41,7 +41,28 @@ Disadvantage is, that you need to set up your wifi credentials on your image.
 
 To do so, replugin your sd card to let the system load the sd file system. On this file system, open the file /etc/wpa\_supplicant.conf and set your personal wifi credentials (Wifi Network Name and Password).
 
-internally the branch for this is **wifi_client**. This branch is taken automatically, if you setup the system on docker.
+example:
+```vim /media/yorn/c55aa1af-330a-466a-a747-ff1d60730f49/etc/wpa_supplicant.conf```
+
+then you see this:
+```
+ctrl_interface=/var/run/wpa_supplicant
+ctrl_interface_group=0
+update_config=1
+
+network={
+        ssid="Wifi-SSID-Here"
+        psk="wpa-ascii-passphrase-here"
+        proto=RSN
+        key_mgmt=WPA-PSK
+        pairwise=CCMP
+        auth_alg=OPEN
+}
+```
+
+Change your Accesspoint **ssid** (access point name) and the password **psk** according to your credentials. In case you do not have WPA2 encryption, please find the correct parameters with an internet search :).  
+
+internally the building branch for this is **wifi_client**. This branch is taken automatically, if you setup the system on docker. So use the master branch for your docker setup and repo will be choosen corretly.
 
 ## Wifi Accesspoint Mode
 Your can also setup your raspberry pi to open your own Accesspoint (without a password). In this case, there is another branch **with_hostapd** you can use.
