@@ -41,8 +41,8 @@ Disadvantage is, that you need to set up your wifi credentials on your image.
 
 To do so, replugin your sd card to let the system load the sd file system. On this file system, open the file /etc/wpa\_supplicant.conf and set your personal wifi credentials (Wifi Network Name and Password).
 
-example:
-```vim /media/yorn/c55aa1af-330a-466a-a747-ff1d60730f49/etc/wpa_supplicant.conf```
+example (you may need root privileges):
+```sudo vim /media/yorn/c55aa1af-330a-466a-a747-ff1d60730f49/etc/wpa_supplicant.conf```
 
 then you see this:
 ```
