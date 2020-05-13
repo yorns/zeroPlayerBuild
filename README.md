@@ -9,6 +9,10 @@ The buildsystem uses the Google repo tool (https://android.googlesource.com/tool
 
 # Usage
 
+Checkout the right branch (start should be wifi_client).
+
+```git clone https://github.com/yorns/zeroPlayerBuild.git -b wifi_client```
+
 Build the Docker image:
 ```
 cd docker
@@ -68,3 +72,7 @@ internally the building branch for this is **wifi_client**. This branch is taken
 Your can also setup your raspberry pi to open your own Accesspoint (without a password). In this case, there is another branch **with_hostapd** you can use.
  
 To compile this image, please do not checkout the **master** branch, but the **with_hostapd** branch, that is all. Follow all information as described above. 
+
+```git clone https://github.com/yorns/zeroPlayerBuild.git -b with_hostapd```
+
+
