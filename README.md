@@ -28,7 +28,7 @@ https://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html
 ```
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
-repo init -u https://github.com/yorns/zeroPlayerBuild.git 
+repo init -u https://github.com/yorns/zeroPlayerBuild.git -b wifi_client
 repo sync
 . setup-environment
 bitbake zero-image
@@ -73,6 +73,6 @@ Your can also setup your raspberry pi to open your own Accesspoint (without a pa
  
 To compile this image, please do not checkout the **master** branch, but the **with_hostapd** branch, that is all. Follow all information as described above. 
 
-```git clone https://github.com/yorns/zeroPlayerBuild.git -b with_hostapd```
+```repo init -u https://github.com/yorns/zeroPlayerBuild.git -b with_hostapd```
 
 
