@@ -67,4 +67,4 @@ internally the building branch for this is **wifi_client**. This branch is taken
 ## Wifi Accesspoint Mode
 Your can also setup your raspberry pi to open your own Accesspoint (without a password). In this case, there is another branch **with_hostapd** you can use.
  
-
+To compile this image, please do not checkout the **master** branch, but the **with_hostapd** branch, that is all. Follow all information as described above. 
