@@ -7,6 +7,7 @@ After=sys-subsystem-net-devices-wlan0.device
 Type=forking
 PIDFile=/run/hostapd.pid
 ExecStart=/usr/sbin/hostapd /etc/hostapd.conf -P /run/hostapd.pid -B
+ExecStartPost=/usr/sbin/udhcpd
 
 [Install]
 WantedBy=multi-user.target
