@@ -9,7 +9,7 @@ The buildsystem uses the Google repo tool (https://android.googlesource.com/tool
 
 # Usage
 
-Checkout the right branch (start should be wifi_client).
+Checkout the right branch (start should be master branch).
 
 ```
 git clone https://github.com/yorns/zeroPlayerBuild.git
