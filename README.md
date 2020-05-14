@@ -11,7 +11,7 @@ The buildsystem uses the Google repo tool (https://android.googlesource.com/tool
 
 Checkout the right branch (start should be wifi_client).
 
-```git clone https://github.com/yorns/zeroPlayerBuild.git -b wifi_client```
+```git clone https://github.com/yorns/zeroPlayerBuild.git```
 
 Build the Docker image:
 ```
