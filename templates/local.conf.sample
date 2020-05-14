@@ -12,6 +12,8 @@
 # variable as required.
 LICENSE_FLAGS_WHITELIST = "commercial"
 
+hostname_pn-base-files = "zeroplayer"
+
 #
 # Machine Selection
 #
