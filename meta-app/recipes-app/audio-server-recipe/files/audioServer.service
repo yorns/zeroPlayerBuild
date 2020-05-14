@@ -4,10 +4,10 @@ After=mpv.service
 Requires=mpv.service
 
 [Install]
-WantedBy=wpa_supplicant.service
+WantedBy=hostapd.service
 
 [Service]
-ExecStart=/usr/bin/audioServer /etc/audioserver.json 
+ExecStart=/usr/bin/audioServer  
 
 Restart=always
 RestartSec=2
