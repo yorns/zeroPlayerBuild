@@ -3,7 +3,12 @@ LICENSE = "CLOSED"
 # LIC_FILES_CHKSUM = "file://LICENSE;md5=254d223b9e70204fcb33cd46be4df2d7"
 
 SRCBRANCH = "master"
-SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https;branch=${SRCBRANCH}"
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+
+SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https;branch=${SRCBRANCH} \
+           file://audioServer.service \
+           file://mpv.service \
+           "
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
@@ -21,8 +26,7 @@ SYSTEMD_SERVICE_${PN} = "audioServer.service mpv.service"
 
 do_install_append() {
   install -d ${D}${systemd_unitdir}/system
-  install -m 0644 ${S}/systemd/audioServer.service ${D}${systemd_unitdir}/system
-  install -m 0644 ${S}/systemd/mpv.service ${D}${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/*.service ${D}${systemd_unitdir}/system
 }
 
 FILES_${PN} = "\

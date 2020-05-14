@@ -1,0 +1,13 @@
+[Unit]
+Description=mplayer handler
+After=wpa_supplicant.service
+
+[Install]
+WantedBy=wpa_supplicant.service
+
+[Service]
+ExecStart=/usr/bin/mpv --no-video --idle=yes --input-ipc-server=/tmp/mpvsocket --audio-device=alsa/default:CARD=0
+
+Restart=always
+RestartSec=2
+

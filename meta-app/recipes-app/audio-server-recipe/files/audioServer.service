@@ -1,0 +1,14 @@
+[Unit]
+Description=Audio Server Service
+After=mpv.service
+Requires=mpv.service
+
+[Install]
+WantedBy=wpa_supplicant.service
+
+[Service]
+ExecStart=/usr/bin/audioServer /etc/audioserver.json 
+
+Restart=always
+RestartSec=2
+
