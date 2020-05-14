@@ -52,6 +52,8 @@ ${localstatedir}/audioserver/html/js/popper.min.js \
 ${localstatedir}/audioserver/html/js/jquery-3.4.1.min.js \
 ${localstatedir}/audioserver/html/js/audioserver.js \
 ${localstatedir}/audioserver/playlist \
-${bindir}/audioServer"
+${bindir}/audioServer \
+${sysconfdir}/audioserver.json \
+"
 
 
