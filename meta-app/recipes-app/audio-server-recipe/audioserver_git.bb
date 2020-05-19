@@ -36,8 +36,8 @@ FILES_${PN} = "\
 ${localstatedir}/audioserver \
 ${localstatedir}/audioserver/audioMp3 \
 ${localstatedir}/audioserver/audioJson \
-${localstatedir}/audioserver/cache \
 ${localstatedir}/audioserver/html \
+${localstatedir}/audioserver/cache \
 ${localstatedir}/audioserver/html/img \
 ${localstatedir}/audioserver/html/index.html \
 ${localstatedir}/audioserver/html/font \
@@ -54,10 +54,9 @@ ${localstatedir}/audioserver/html/js/bootstrap.min.js \
 ${localstatedir}/audioserver/html/js/popper.min.js \
 ${localstatedir}/audioserver/html/js/jquery-3.4.1.min.js \
 ${localstatedir}/audioserver/html/js/audioserver.js \
-${localstatedir}/audioserver/playlist \
+${localstatedir}/audioserver/playlistM3u \
+${localstatedir}/audioserver/playlistJson \
+${sysconfdir}/audioserver.json \
 ${bindir}/audioServer \
 ${bindir}/startAudioServer \
-${sysconfdir}/audioserver.json \
 "
-
-
