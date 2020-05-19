@@ -7,7 +7,7 @@ Requires=mpv.service
 WantedBy=hostapd.service
 
 [Service]
-ExecStart=/usr/bin/audioServer  
+ExecStart=/usr/bin/startAudioServer  
 
 Restart=always
 RestartSec=2

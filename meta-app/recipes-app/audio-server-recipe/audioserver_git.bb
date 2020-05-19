@@ -8,7 +8,8 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https;branch=${SRCBRANCH} \
            file://audioServer.service \
            file://mpv.service \
-           "
+           file://startAudioServer \
+          "
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
@@ -27,6 +28,8 @@ SYSTEMD_SERVICE_${PN} = "audioServer.service mpv.service"
 do_install_append() {
   install -d ${D}${systemd_unitdir}/system
   install -m 0644 ${WORKDIR}/*.service ${D}${systemd_unitdir}/system
+  install -d ${D}${bindir}
+  install -m 0644 ${WORKDIR}/startAudioServer ${D}${bindir} 
 }
 
 FILES_${PN} = "\
@@ -53,6 +56,7 @@ ${localstatedir}/audioserver/html/js/jquery-3.4.1.min.js \
 ${localstatedir}/audioserver/html/js/audioserver.js \
 ${localstatedir}/audioserver/playlist \
 ${bindir}/audioServer \
+${bindir}/startAudioServer \
 ${sysconfdir}/audioserver.json \
 "
 

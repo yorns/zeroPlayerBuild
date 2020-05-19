@@ -1,0 +1,6 @@
+#!/bin/sh
+APLAY=`which aplay`
+AUDIOSERVER=`which audioServer`
+ALSA_CARD=$($APLAY -l | grep "\[USB Audio\]" | sed 's/[^:]*: \([^ ]*\).*/\1/')
+$AUDIOSERVER
+
