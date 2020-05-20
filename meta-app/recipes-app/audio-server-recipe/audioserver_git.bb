@@ -7,7 +7,6 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https;branch=${SRCBRANCH} \
            file://audioServer.service \
-           file://mpv.service \
            file://startAudioServer \
           "
 
@@ -18,12 +17,12 @@ SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
 DEPENDS = "boost openssl taglib nlohmann-json gstreamer1.0 ca-certificates"
-RDEPENDS_${PN} = "hostapd mpv gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-meta-base gstreamer1.0-plugins-good ca-certificates"
+RDEPENDS_${PN} = "hostapd alsa-state alsa-utils streamer1.0 gstreamer1.0-plugins-base gstreamer1.0-meta-base gstreamer1.0-plugins-good ca-certificates"
 
 inherit cmake
 inherit systemd
 
-SYSTEMD_SERVICE_${PN} = "audioServer.service mpv.service"
+SYSTEMD_SERVICE_${PN} = "audioServer.service"
 
 do_install_append() {
   install -d ${D}${systemd_unitdir}/system
