@@ -8,7 +8,8 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI += " \
     file://wired.network \
-    file://wireless.network \
+    file://wireless.ap.network \
+    file://wireless.client.network \
     file://resolved.conf \
     "
 
@@ -17,6 +18,7 @@ do_install_append() {
 	install -m 0644 ${WORKDIR}/*.network ${D}${sysconfdir}/systemd/network/
         install -m 0644 ${WORKDIR}/resolved.conf ${D}${sysconfdir}/systemd/resolved.conf
         install -d ${D}/${systemd_unitdir}/system
+        ln -s ${D}${sysconfdir}/systemd/network/wireless.ap.network ${D}${sysconfdir}/systemd/network/wireless.network
 	ln -s /run/systemd/resolve/resolv.conf ${D}${sysconfdir}/resolv.conf
 }
 

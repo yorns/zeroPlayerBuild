@@ -1,7 +1,7 @@
 [Unit]
 Description=Audio Server Service
-After=mpv.service
-Requires=mpv.service
+After=snc-broker.service
+Requires=snc-broker.service
 
 [Install]
 WantedBy=hostapd.service
