@@ -2,11 +2,11 @@
 Description=WPA supplicant
 BindsTo=sys-subsystem-net-devices-wlan0.device
 After=sys-subsystem-net-devices-wlan0.device
+ConditionPathExists=/etc/wpa_supplicant.conf
 
 [Service]
 Type=forking
 ExecStart=/usr/sbin/wpa_supplicant -i wlan0 -c /etc/wpa_supplicant.conf -B
-ConditionPathExists=/etc/wpa_supplicant.conf
 
 [Install]
 WantedBy=multi-user.target
