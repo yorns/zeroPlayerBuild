@@ -40,6 +40,9 @@ bitbake zero-image
 The final images are stored on the host (please set WORKDIR in that environment if necessary)
 in $WORKDIR/build/tmp/deploy/images/raspberrypi0-wifi/zero-image-raspberrypi0-wifi.rpi-sdimg
 
+## In case you want to reuse the generated blobs (and only update changes), find some hints here 
+https://github.com/yorns/zeroPlayerBuild/wiki/Tips-and-Tweaks
+
 # Changing between wifi client and server mode
 
 ## Wifi Client Mode
