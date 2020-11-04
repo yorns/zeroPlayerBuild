@@ -16,7 +16,7 @@ SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "boost snc openssl taglib nlohmann-json gstreamer1.0 ca-certificates"
+DEPENDS = "boost snc openssl taglib nlohmann-json gstreamer1.0 ca-certificates spirfid"
 RDEPENDS_${PN} = "snc hostapd wpa-supplicant alsa-state alsa-utils gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-meta-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad iw ca-certificates"
 
 inherit cmake
