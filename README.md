@@ -9,9 +9,12 @@ The buildsystem uses the Google repo tool (https://android.googlesource.com/tool
 
 # Usage
 
-Checkout the right branch (start should be wifi_client).
+Checkout the right branch (start should be master branch).
 
-```git clone https://github.com/yorns/zeroPlayerBuild.git```
+```
+git clone https://github.com/yorns/zeroPlayerBuild.git
+cd zeroPlayerBuild
+```
 
 Build the Docker image:
 ```
@@ -22,8 +25,9 @@ docker build . -t crops/poky
 docker run --rm -it -v $WORKDIR:/workdir crops/poky --workdir=/workdir
 ```
 
-Start a yocto build (inside the running Docker container or on a host which has all required build host packages installed:
-https://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html#packages):
+## Start a yocto build
+inside the running Docker container or on a host which has all required build host packages installed:
+https://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html#packages
 
 ```
 git config --global user.email "you@example.com"
@@ -34,45 +38,15 @@ repo sync
 bitbake zero-image
 ```
 
-The final images are stored on the host (please set WORKDIR in that environment if necessary)
+The final images are stored on the host at (please set WORKDIR variable in that environment if necessary)
 in $WORKDIR/build/tmp/deploy/images/raspberrypi0-wifi/zero-image-raspberrypi0-wifi.rpi-sdimg
 
-# Changing between wifi client and server mode
-
-## Wifi Client Mode
-On the main branch, the system is set up in wifi client mode. Advantage is, that the small device links into your local wifi.
-Disadvantage is, that you need to set up your wifi credentials on your image.
-
-To do so, replugin your sd card to let the system load the sd file system. On this file system, open the file /etc/wpa\_supplicant.conf and set your personal wifi credentials (Wifi Network Name and Password).
-
-example (you may need root privileges):
-```sudo vim /media/yorn/c55aa1af-330a-466a-a747-ff1d60730f49/etc/wpa_supplicant.conf```
-
-then you see this:
+## Writing the image to an sd card
 ```
-ctrl_interface=/var/run/wpa_supplicant
-ctrl_interface_group=0
-update_config=1
-
-network={
-        ssid="Wifi-SSID-Here"
-        psk="wpa-ascii-passphrase-here"
-        proto=RSN
-        key_mgmt=WPA-PSK
-        pairwise=CCMP
-        auth_alg=OPEN
-}
+sudo su
+dd if=/home/yorn/tmp/workdir/build/tmp/deploy/images/raspberrypi0-wifi/zero-image-raspberrypi0-wifi.rpi-sdimg  of=/dev/mmcblk0 bs=1M status=progress
 ```
 
-Change your Accesspoint **ssid** (access point name) and the password **psk** according to your credentials. In case you do not have WPA2 encryption, please find the correct parameters with an internet search :).  
-
-internally the building branch for this is **wifi_client**. This branch is taken automatically, if you setup the system on docker. So use the master branch for your docker setup and repo will be choosen corretly.
-
-## Wifi Accesspoint Mode
-Your can also setup your raspberry pi to open your own Accesspoint (without a password). In this case, there is another branch **with_hostapd** you can use.
- 
-To compile this image, please do not checkout the **master** branch, but the **with_hostapd** branch, that is all. Follow all information as described above. 
-
-```repo init -u https://github.com/yorns/zeroPlayerBuild.git -b with_hostapd```
-
+## In case you want to reuse the generated blobs (and only update changes), find some hints here 
+https://github.com/yorns/zeroPlayerBuild/wiki/Tips-and-Tweaks
 
