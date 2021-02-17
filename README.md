@@ -32,7 +32,7 @@ https://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html
 ```
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
-repo init -u https://github.com/yorns/zeroPlayerBuild.git -b wifi_client
+repo init -u https://github.com/yorns/zeroPlayerBuild.git
 repo sync
 . setup-environment
 bitbake zero-image
