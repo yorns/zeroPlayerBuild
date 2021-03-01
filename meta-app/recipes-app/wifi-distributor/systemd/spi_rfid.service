@@ -1,0 +1,14 @@
+[Unit]
+Description=wifi distributor
+After=snc-broker.service
+Requires=snc-broker.service
+
+[Install]
+WantedBy=audioserver.service
+
+[Service]
+ExecStart=/usr/bin/scanWifi.sh  
+
+Restart=always
+RestartSec=30
+
