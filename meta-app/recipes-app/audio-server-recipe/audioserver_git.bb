@@ -3,7 +3,12 @@ LICENSE = "CLOSED"
 # LIC_FILES_CHKSUM = "file://LICENSE;md5=254d223b9e70204fcb33cd46be4df2d7"
 
 SRCBRANCH = "master"
-SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https;branch=${SRCBRANCH}"
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+
+SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https;branch=${SRCBRANCH} \
+           file://audioServer.service \
+           file://startAudioServer \
+          "
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
@@ -11,25 +16,27 @@ SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "boost openssl taglib nlohmann-json"
-RDEPENDS_${PN} = "hostapd mpv"
+DEPENDS = "boost snc openssl taglib nlohmann-json gstreamer1.0 ca-certificates spirfid"
+RDEPENDS_${PN} = "snc hostapd wpa-supplicant alsa-state alsa-utils gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-meta-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad iw ca-certificates"
 
 inherit cmake
 inherit systemd
 
-SYSTEMD_SERVICE_${PN} = "audioServer.service mpv.service"
+SYSTEMD_SERVICE_${PN} = "audioServer.service"
 
 do_install_append() {
   install -d ${D}${systemd_unitdir}/system
-  install -m 0644 ${S}/systemd/audioServer.service ${D}${systemd_unitdir}/system
-  install -m 0644 ${S}/systemd/mpv.service ${D}${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/*.service ${D}${systemd_unitdir}/system
+  install -d ${D}${bindir}
+  install -m 0755 ${WORKDIR}/startAudioServer ${D}${bindir} 
 }
 
 FILES_${PN} = "\
 ${localstatedir}/audioserver \
-${localstatedir}/audioserver/mp3 \
-${localstatedir}/audioserver/tmp \
+${localstatedir}/audioserver/audioMp3 \
+${localstatedir}/audioserver/audioJson \
 ${localstatedir}/audioserver/html \
+${localstatedir}/audioserver/cache \
 ${localstatedir}/audioserver/html/img \
 ${localstatedir}/audioserver/html/index.html \
 ${localstatedir}/audioserver/html/font \
@@ -42,11 +49,14 @@ ${localstatedir}/audioserver/html/css \
 ${localstatedir}/audioserver/html/css/bootstrap.min.css \
 ${localstatedir}/audioserver/html/css/fontello.css \
 ${localstatedir}/audioserver/html/js \
+${localstatedir}/audioserver/html/css \
 ${localstatedir}/audioserver/html/js/bootstrap.min.js \
 ${localstatedir}/audioserver/html/js/popper.min.js \
 ${localstatedir}/audioserver/html/js/jquery-3.4.1.min.js \
 ${localstatedir}/audioserver/html/js/audioserver.js \
-${localstatedir}/audioserver/playlist \
-${localstatedir}/audioserver/player_log \
-${bindir}/audioServer"
-
+${localstatedir}/audioserver/playlistM3u \
+${localstatedir}/audioserver/playlistJson \
+${sysconfdir}/audioserver.json \
+${bindir}/audioServer \
+${bindir}/startAudioServer \
+"

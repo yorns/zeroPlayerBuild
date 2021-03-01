@@ -4,12 +4,12 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 inherit systemd
 
-SRC_URI += "file://hostapd.conf file://hostapd.service file://udhcpd.conf"
+SRC_URI += "file://hostapd.conf file://udhcpd.conf file://hostapd.service"
 
 do_install_append() {
 	install -d ${D}${sysconfdir}
 	install -m 0644 ${WORKDIR}/hostapd.conf ${D}${sysconfdir}/hostapd.conf
-	install -m 0644 ${WORKDIR}/udhcpd.conf ${D}${sysconfdir}/udhcpd.conf
+        install -m 0644 ${WORKDIR}/udhcpd.conf ${D}${sysconfdir}/udhcpd.conf
 }
 
 # Configure location of config file in package

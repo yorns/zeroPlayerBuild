@@ -12,6 +12,10 @@ IMAGE_FSTYPES_raspberrypi0-wifi ?= "tar.bz2 rpi-sdimg"
 
 IMAGE_FEATURES += "ssh-server-dropbear"
 
+hostname_pn-base-files = "zeroplayer"
+
+ENABLE_SPI_BUS = "1"
+
 # Additional packages
 IMAGE_INSTALL_append = " \
   haveged \

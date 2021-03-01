@@ -1,0 +1,14 @@
+[Unit]
+Description=RFID reader Service
+After=snc-broker.service
+Requires=snc-broker.service
+
+[Install]
+WantedBy=audioserver.service
+
+[Service]
+ExecStart=/usr/bin/spi_rfid  
+
+Restart=always
+RestartSec=2
+
