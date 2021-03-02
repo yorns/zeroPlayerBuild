@@ -46,6 +46,13 @@ repo sync
 . setup-environment
 bitbake zero-image
 ```
+again, in case you are here for the second (or third ...) time:
+```
+repo sync
+. setup-environment
+bitbake zero-image
+```
+
 
 The final images are stored on the host at (please set WORKDIR variable in that environment if necessary)
 in $WORKDIR/build/tmp/deploy/images/raspberrypi0-wifi/zero-image-raspberrypi0-wifi.rpi-sdimg
