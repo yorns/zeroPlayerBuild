@@ -25,6 +25,15 @@ docker build . -t crops/poky
 docker run --rm -it -v $WORKDIR:/workdir crops/poky --workdir=/workdir
 ```
 
+In case you have set the docker environment, on a second run, you can do:
+```
+cd docker
+export WORKDIR=$HOME/tmp/workdir/
+docker run --rm -it -v $WORKDIR:/workdir crops/poky --workdir=/workdir
+```
+
+
+
 ## Start a yocto build
 inside the running Docker container or on a host which has all required build host packages installed:
 https://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html#packages
@@ -37,6 +46,13 @@ repo sync
 . setup-environment
 bitbake zero-image
 ```
+again, in case you are here for the second (or third ...) time:
+```
+repo sync
+. setup-environment
+bitbake zero-image
+```
+
 
 The final images are stored on the host at (please set WORKDIR variable in that environment if necessary)
 in $WORKDIR/build/tmp/deploy/images/raspberrypi0-wifi/zero-image-raspberrypi0-wifi.rpi-sdimg
