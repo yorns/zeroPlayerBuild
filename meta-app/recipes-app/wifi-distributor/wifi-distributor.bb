@@ -4,7 +4,7 @@ LICENSE = "CLOSED"
 
 S = "${WORKDIR}"
 
-RDEPENDS_${PN} = "snc iw " 
+RDEPENDS_${PN} = "snc iw bash" 
 #DEPENDS = "snc iw "
 
 inherit systemd
