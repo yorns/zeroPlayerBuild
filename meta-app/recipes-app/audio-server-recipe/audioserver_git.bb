@@ -59,7 +59,7 @@ ${localstatedir}/audioserver/html/js/NoSleep.min.js \
 ${localstatedir}/audioserver/html/js/audioserver.js \
 ${localstatedir}/audioserver/playlistM3u \
 ${localstatedir}/audioserver/playlistJson \
-${localstatedir}/audioserver/tag
+${localstatedir}/audioserver/tag \
 ${sysconfdir}/audioserver.json \
 ${bindir}/audioServer \
 ${bindir}/startAudioServer \
