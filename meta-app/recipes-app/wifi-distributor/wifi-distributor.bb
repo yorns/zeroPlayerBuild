@@ -8,13 +8,14 @@ RDEPENDS_${PN} = "snc iw "
 #DEPENDS = "snc iw "
 
 inherit systemd
-
+SRC_URI += "file://systemd/wifi-distributor.service file://scanWifi.sh"
 SYSTEMD_SERVICE_${PN} = "wifi-distributor.service"
 
 do_install_append() {
   install -d ${D}${systemd_unitdir}/system
   install -m 0644 ${S}/systemd/wifi-distributor.service ${D}${systemd_unitdir}/system
-  install -m 0644 ${S}/files/scanWifi.sh ${D}${bindir}
+  install -d ${D}${bindir}
+  install -m 0755 ${S}/scanWifi.sh ${D}${bindir}
 }
 
 FILES_{PN} = "${bindir}/scanWifi.sh"

@@ -55,10 +55,13 @@ ${localstatedir}/audioserver/html/css \
 ${localstatedir}/audioserver/html/js/bootstrap.min.js \
 ${localstatedir}/audioserver/html/js/popper.min.js \
 ${localstatedir}/audioserver/html/js/jquery-3.4.1.min.js \
+${localstatedir}/audioserver/html/js/NoSleep.min.js \
 ${localstatedir}/audioserver/html/js/audioserver.js \
 ${localstatedir}/audioserver/playlistM3u \
 ${localstatedir}/audioserver/playlistJson \
+${localstatedir}/audioserver/tag
 ${sysconfdir}/audioserver.json \
 ${bindir}/audioServer \
 ${bindir}/startAudioServer \
+${bindir}/wpa_generator \
 "
