@@ -4,21 +4,22 @@ LICENSE = "CLOSED"
 
 S = "${WORKDIR}"
 
+SRCBRANCH = "master"
 RDEPENDS_${PN} = "snc iw bash" 
-#DEPENDS = "snc iw "
 
 inherit systemd
-SRC_URI += "file://systemd/wifi-distributor.service file://scanWifi.sh"
+
+SRC_URI += "file://wifi-distributor.service file://scanWifi.sh"
 SYSTEMD_SERVICE_${PN} = "wifi-distributor.service"
 
 do_install_append() {
   install -d ${D}${systemd_unitdir}/system
-  install -m 0644 ${S}/systemd/wifi-distributor.service ${D}${systemd_unitdir}/system
+  install -m 0644 ${S}/wifi-distributor.service ${D}${systemd_unitdir}/system
   install -d ${D}${bindir}
   install -m 0755 ${S}/scanWifi.sh ${D}${bindir}
 }
 
-FILES_{PN} = "${bindir}/scanWifi.sh"
+FILES_{PN} = "${bindir}/scanWifi.sh "
 
-SYSTEMD_AUTO_ENABLE_${PN} = "enable"
+# SYSTEMD_AUTO_ENABLE_${PN} = "enable"
 

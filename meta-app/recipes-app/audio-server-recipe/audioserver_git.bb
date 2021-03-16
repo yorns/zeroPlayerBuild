@@ -6,7 +6,7 @@ SRCBRANCH = "master"
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI = "git://github.com/yorns/audioServer.git;protocol=https;branch=${SRCBRANCH} \
-           file://audioServer.service \
+           file://audioserver.service \
            file://startAudioServer \
           "
 
@@ -24,7 +24,7 @@ RDEPENDS_${PN} = "snc hostapd wpa-supplicant alsa-state alsa-utils gstreamer1.0 
 inherit cmake
 inherit systemd
 
-SYSTEMD_SERVICE_${PN} = "audioServer.service"
+SYSTEMD_SERVICE_${PN} = "audioserver.service"
 
 do_install_append() {
   install -d ${D}${systemd_unitdir}/system

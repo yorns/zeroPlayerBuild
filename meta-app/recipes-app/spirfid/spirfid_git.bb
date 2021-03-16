@@ -36,3 +36,4 @@ ${bindir}/read_rfid \
 ${bindir}/requester \
 ${localstatedir}/audioserver/stick/keyTable.json \
 "
+
