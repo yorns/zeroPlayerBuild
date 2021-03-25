@@ -14,8 +14,6 @@ IMAGE_FEATURES += "ssh-server-dropbear"
 
 hostname_pn-base-files = "zeroplayer"
 
-ENABLE_SPI_BUS = "1"
-
 # Additional packages
 IMAGE_INSTALL_append = " \
   haveged \
