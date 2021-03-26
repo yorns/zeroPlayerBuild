@@ -16,6 +16,10 @@ hostname_pn-base-files = "zeroserver"
 
 ENABLE_SPI_BUS = "1"
 
+# add a root password here
+# INHERIT += "extrausers"
+# EXTRA_USERS_PARAMS = "usermod -P p@ssw0rd root;"
+
 #
 # Machine Selection
 #
