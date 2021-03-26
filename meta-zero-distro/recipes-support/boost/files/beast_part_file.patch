@@ -1,0 +1,51 @@
+diff -ru a/boost/beast/http/basic_file_body.hpp a/boost/beast/http/basic_file_body.hpp
+--- a/boost/beast/http/basic_file_body.hpp	2021-02-09 20:39:09.947212383 +0100
++++ a/boost/beast/http/basic_file_body.hpp	2021-02-09 20:31:23.229057928 +0100
+@@ -21,6 +21,8 @@
+ #include <cstdint>
+ #include <utility>
+ 
++#define WITH_BOOST_BEAST_PARTIAL_FILE
++
+ namespace boost {
+ namespace beast {
+ namespace http {
+@@ -144,7 +146,7 @@
+         @param ec Set to the error, if any occurred
+     */
+     void
+-    open(char const* path, file_mode mode, error_code& ec);
++    open(char const* path, file_mode mode, error_code& ec , uint64_t start = 0, uint64_t end = 0 );
+ 
+     /** Set the open file
+ 
+@@ -174,7 +176,7 @@
+ void
+ basic_file_body<File>::
+ value_type::
+-open(char const* path, file_mode mode, error_code& ec)
++open(char const* path, file_mode mode, error_code& ec, uint64_t start, uint64_t end)
+ {
+     // Open the file
+     file_.open(path, mode, ec);
+@@ -188,6 +190,20 @@
+         close();
+         return;
+     }
++
++    if (end > file_size_ || end == 0)
++        end = file_size_-1;
++
++    if (start <= end) {
++	file_.seek(start, ec);
++	if(ec)
++	{
++	    close();
++	    return;
++	}
++	file_size_ = end - start + 1;
++    }
++
+ }
+ 
+ template<class File>
