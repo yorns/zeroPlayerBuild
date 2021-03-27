@@ -7,6 +7,9 @@ directory given by the the host.
 
 The buildsystem uses the Google repo tool (https://android.googlesource.com/tools/repo) to setup the Yocto layer structure (i.e. checkout all repos).
 
+To know, what to do, when you start the raspberry pi with the image sd card, please have a look at the wiki:
+https://github.com/yorns/zeroPlayerBuild/wiki/Get-started-and-work-with-the-zero-player
+
 # Usage
 
 Checkout the right branch (start should be master branch).
