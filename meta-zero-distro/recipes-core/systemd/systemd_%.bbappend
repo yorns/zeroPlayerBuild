@@ -14,11 +14,15 @@ SRC_URI += " \
     "
 
 do_install_append() {
-	install -d ${D}${sysconfdir}/systemd/network/
-	install -m 0644 ${WORKDIR}/*.network ${D}${sysconfdir}/systemd/network/
-        install -m 0644 ${WORKDIR}/resolved.conf ${D}${sysconfdir}/systemd/resolved.conf
+	install -d ${D}${base_libdir}/systemd/network/
+	install -m 0644 ${WORKDIR}/wireless.ap.network ${D}${base_libdir}/systemd/network/60-wireless.ap.network
+        install -m 0644 ${WORKDIR}/wireless.client.network ${D}${base_libdir}/systemd/network/80-wireless.client.network
+        install -m 0644 ${WORKDIR}/resolved.conf ${D}${base_libdir}/systemd/resolved.conf
+        install -d ${D}${bindir}
+        install -m 0777 ${WORKDIR}/*.sh ${D}${bindir}
         install -d ${D}/${systemd_unitdir}/system
-        lnr ${D}${sysconfdir}/systemd/network/wireless.ap.network ${D}${sysconfdir}/systemd/network/wireless.network
+#        lnr ${D}${sysconfdir}/systemd/network/wireless.ap.network ${D}${sysconfdir}/systemd/network/wireless.network
+        # is there any effect in this?
 	ln -s /run/systemd/resolve/resolv.conf ${D}${sysconfdir}/resolv.conf
 }
 
