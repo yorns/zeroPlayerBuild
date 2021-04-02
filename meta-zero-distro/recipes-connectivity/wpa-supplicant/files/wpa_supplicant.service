@@ -6,13 +6,13 @@ ConditionPathExists=/etc/wpa_supplicant.conf
 
 [Service]
 Type=forking
-ExecStartPre=/bin/rm /run/startApEither
+ExecStartPre=/bin/rm -f /run/startApEither
 ExecStartPre=/bin/mkdir -p /run/systemd/network/                         
-ExecStartPre=/bin/cp /lib/systemd/network/80-wireless.network /run/systemd/network/10-wireless.network
+ExecStartPre=/bin/cp /lib/systemd/network/80-wireless.client.network /run/systemd/network/10-wireless.network
 ExecStartPre=/bin/systemctl daemon-reload
 ExecStartPre=/bin/systemctl restart systemd-networkd                               
 ExecStart=/usr/sbin/wpa_supplicant -i wlan0 -c /etc/wpa_supplicant.conf -B
-ExecStartPost=/bin/systemctl restart restartAPonFailure
+ExecStartPost=/bin/systemctl restart restart_ap_on_failure
                           
 [Install]                 
 WantedBy=multi-user.target

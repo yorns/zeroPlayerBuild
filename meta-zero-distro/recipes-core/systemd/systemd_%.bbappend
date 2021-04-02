@@ -3,14 +3,17 @@
 # and: http://www.freedesktop.org/software/systemd/man/systemd.network.html
 
 #PACKAGECONFIG_append = " networkd resolved"
+#DEPENDS += " bash "
+RDEPENDS_${PN} += " bash "
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI += " \
-    file://wired.network \
     file://wireless.ap.network \
     file://wireless.client.network \
     file://resolved.conf \
+    file://restartAPonFailure.sh \
+    file://wpa_generate.sh \
     "
 
 do_install_append() {
@@ -20,12 +23,15 @@ do_install_append() {
         install -m 0644 ${WORKDIR}/resolved.conf ${D}${base_libdir}/systemd/resolved.conf
         install -d ${D}${bindir}
         install -m 0777 ${WORKDIR}/*.sh ${D}${bindir}
-        install -d ${D}/${systemd_unitdir}/system
+#        install -d ${D}/${systemd_unitdir}/system
 #        lnr ${D}${sysconfdir}/systemd/network/wireless.ap.network ${D}${sysconfdir}/systemd/network/wireless.network
         # is there any effect in this?
-	ln -s /run/systemd/resolve/resolv.conf ${D}${sysconfdir}/resolv.conf
+#	ln -s /run/systemd/resolve/resolv.conf ${D}${sysconfdir}/resolv.conf
 }
 
 #USERADD_PARAM_${PN} += "--system --home /dev/null systemd-journal-gateway"
 
-FILES_${PN} += "${sysconfdir}"
+FILES_${PN} += "${base_libdir}/systemd \
+                ${bindir} \
+                "
+

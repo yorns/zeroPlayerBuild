@@ -1,7 +1,7 @@
 [Unit]
 Description=Example Service
 Requires=wpa_supplicant.service
-After=wpa_supplicant.service
+
 ConditionPathExists=/etc/wpa_supplicant.conf
 ConditionPathExists=!/run/startApEither
 
