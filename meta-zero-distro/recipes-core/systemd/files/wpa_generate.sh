@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "generate wpa supplicant config"
 /usr/bin/wpa_generator
+/bin/sync
 echo "remove temporal AP start flag"
 /bin/rm -f /run/startApEither
 echo "start hostapd (Wifi Accesspoint)"
