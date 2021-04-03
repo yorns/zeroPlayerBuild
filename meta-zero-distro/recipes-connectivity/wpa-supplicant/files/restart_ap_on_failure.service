@@ -1,6 +1,6 @@
 [Unit]
 Description=Example Service
-Requires=wpa_supplicant.service
+WantedBy=multi-user.target
 
 ConditionPathExists=/etc/wpa_supplicant.conf
 ConditionPathExists=!/run/startApEither
