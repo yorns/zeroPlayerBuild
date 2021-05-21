@@ -17,6 +17,8 @@ inherit systemd
 
 SYSTEMD_SERVICE_${PN} = "snc-broker.service"
 
+SYSROOT_DIRS += "${bindir}"
+
 do_install_append() {
   install -d ${D}${systemd_unitdir}/system
   install -m 0644 ${S}/systemd/snc-broker.service ${D}${systemd_unitdir}/system
