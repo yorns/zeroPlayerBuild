@@ -63,5 +63,5 @@ ${localstatedir}/audioserver/tag \
 ${sysconfdir}/audioserver.json \
 ${bindir}/audioServer \
 ${bindir}/startAudioServer \
-${bindir}/wpa_generator \
+${bindir}/wpaGenerator \
 "
